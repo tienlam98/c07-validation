@@ -45,10 +45,25 @@ function setValidateFormEvent() {
   signBtn.addEventListener("click", function () {
     // Hãy viết code của bạn ở đây ...
     const email = document.getElementsByName("email");
-    // if (validateEmail = false) {
-    //   email.innerText = "Vui long nhap dung dinh dang email"
-    // }
-    console.log(email[0])
+    if (!validateEmail(email[0])) {
+      const errorEmail = document.getElementById("err-email");
+      errorEmail.innerHTML = "Vui lòng nhập đúng định dạng email";
+    }
+    else {
+      const psw = document.getElementsByName("psw");
+      if (!validatePsw(psw[0])) {
+        const errorPsw = document.getElementById("err-psw");
+        errorPsw.innerHTML = "Vui lòng nhập đúng định dạng mật khẩu";
+      }
+      else {
+        const repeatPsw = document.getElementsByName("psw-repeat");
+        if (!(repeatPsw.innerHTML == psw.innerHTML)) {
+          const errorPswRepeat = document.getElementById('err-psw-repeat');
+          errorPswRepeat.innerHTML = "Vui lòng nhập giống mật khẩu ở trên";
+        }
+      }
+
+    }
   });
 
 }
